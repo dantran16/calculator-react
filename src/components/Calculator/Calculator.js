@@ -5,7 +5,8 @@ const Calculator = () => {
 	const [display, setDisplay] = useState("0");
 	const [history, setHistory] = useState("\u00A0");
 	const [operator, setOperator] = useState("");
-	const [solved, setSolved] = useState(false); // This is used to track if someone doesn't change the result by accident.
+  const [solved, setSolved] = useState(false); // This is used to track if someone doesn't change the result by accident.
+  const [changeOperator, setChangeOperator] = useState(false); // This is used to track if someone wants to change operators but already put numbers in
 
 	// Helper Array to map out the buttons. Can be changed into an array of objects if needed!
 	const buttonValues = [
@@ -45,7 +46,8 @@ const Calculator = () => {
 		const handleReset = () => {
 			setDisplay("0");
 			setHistory("\u00A0");
-			setOperator("");
+      setOperator("");
+      setChangeOperator(false)
 		};
 
 		// Handles the +/- sign to flip the current operand
@@ -76,18 +78,19 @@ const Calculator = () => {
 
 		// Handle the operator
 		const handleOperator = (e) => {
-			console.log(display);
 			if (display.includes("undefined")) return;
 			setOperator(e);
 			setHistory((prev) => {
 				if (operator) return [...prev].slice(0, prev.length - 1).join("") + e;
 				return `${display} ${e}`;
 			});
-			setDisplay("0");
+      setDisplay(changeOperator ? display : "0");
+      setChangeOperator(true);
 		};
 
 		// Handles the calculations
-		const handleResult = (e) => {
+    const handleResult = (e) => {
+      if(!operator) return
 			setDisplay((prev) => {
 				const equation = `${history} ${prev}`;
 				const [num1, num2] = equation
@@ -102,7 +105,8 @@ const Calculator = () => {
 			});
 			setHistory("\u00A0");
 			setOperator("");
-			setSolved(true);
+      setSolved(true);
+      setChangeOperator(false);
 		};
 
 		return array.map((e, i) => {
