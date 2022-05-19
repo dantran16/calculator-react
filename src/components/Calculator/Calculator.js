@@ -59,7 +59,8 @@ const Calculator = () => {
 		};
 
 		// Concatenates a decimal to the current operand
-		const handleDot = () => {
+    const handleDot = () => {
+      if (solved) return;
 			setDisplay((prev) => {
 				return prev.includes(".") ? prev : `${prev}.`;
 			});
