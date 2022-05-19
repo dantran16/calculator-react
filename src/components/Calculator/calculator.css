@@ -43,6 +43,14 @@ body{
   border: none;
   background-color: grey;
   color: white;
+  transition: color .5s ease;
+  transition: background-color .5s ease;
+}
+
+.calculator--keys button:hover{
+  color: yellow;
+  background-color: black;
+  cursor:pointer;
 }
 
 .calculator--keys--button[value="0"]{

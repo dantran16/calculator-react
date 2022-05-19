@@ -5,6 +5,7 @@ const Calculator = () => {
   const [display, setDisplay] = useState('0');
   const [history, setHistory] = useState('\u00A0');
   const [operator, setOperator] = useState('');
+  const [solved, setSolved] = useState(false); // This is used to track if someone doesn't change the result by accident.
   
 	// Helper Array to map out the buttons. Can be changed into an array of objects if needed!
 	const buttonValues = [
@@ -34,8 +35,9 @@ const Calculator = () => {
     // Handles the event for one digit buttons (depending on its value) and concatenates to the result
     const handleDigitClick = value => {
       setDisplay(prev => {
-        return prev === '0' || prev === 'undefined' ? `${value}` : `${prev}${value}`
+        return prev === '0' || prev === 'undefined' || solved ? `${value}` : `${prev}${value}`
       });
+      setSolved(false);
     }
 
     // Handles the AC Button to clear all state
@@ -92,6 +94,7 @@ const Calculator = () => {
       })
       setHistory('\u00A0');
       setOperator("")
+      setSolved(true);
     }
 
     return array.map((e, i) => {
@@ -120,7 +123,7 @@ const Calculator = () => {
 	return (
 		<div className="container">
       <div className="calculator--display">
-        <div className="calculator--display--prev">
+        <div className="calculator--display--history">
           {history}
         </div>
         <div className="calculator--display--current">
