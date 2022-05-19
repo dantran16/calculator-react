@@ -18,9 +18,13 @@ body{
 .calculator--display{
   background-color: #fff;
   width: clamp(250px, 100%, 20vw);
-  padding: 2em .5em 0;
+  padding: 0 .5em 0 0;
   box-sizing: border-box;
   text-align: right;
+}
+
+.calculator--display--history{
+  color: grey
 }
 
 .calculator--keys{
