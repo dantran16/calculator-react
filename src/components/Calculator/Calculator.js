@@ -95,13 +95,14 @@ const Calculator = () => {
 		};
 
 		// Handles the calculations
-		const handleResult = (e) => {
+		const handleResult = () => {
 			if (!operator) return;
 			setDisplay((prev) => {
 				const equation = `${history} ${prev}`;
 				const [num1, num2] = equation
 					.split(` ${operator} `)
-					.map((e) => Number(e));
+          .map((e) => Number(e));
+        setHistory(`${num1} ${operator} ${num2} =`);
 				if (operator === "X") return `${num1 * num2}`;
 				else if (operator === "/")
 					return num2 === 0 ? "undefined" : `${num1 / num2}`;
@@ -109,7 +110,7 @@ const Calculator = () => {
 				else if (operator === "+") return `${num1 + num2}`;
 				return prev;
 			});
-			setHistory("\u00A0");
+			
 			setOperator("");
 			setSolved(true);
 			setChangeOperator(false);
@@ -127,7 +128,7 @@ const Calculator = () => {
 			else if (e === "X") handleClick = () => handleOperator(e);
 			else if (e === "-") handleClick = () => handleOperator(e);
 			else if (e === "+") handleClick = () => handleOperator(e);
-			else if (e === "=") handleClick = () => handleResult(e);
+			else if (e === "=") handleClick = () => handleResult();
 			else handleClick = () => console.log("Doesn't work!");
 
 			return (
