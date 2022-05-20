@@ -5,8 +5,8 @@ const Calculator = () => {
 	const [display, setDisplay] = useState("0");
 	const [history, setHistory] = useState("\u00A0");
 	const [operator, setOperator] = useState("");
-  const [solved, setSolved] = useState(false); // This is used to track if someone doesn't change the result by accident.
-  const [changeOperator, setChangeOperator] = useState(false); // This is used to track if someone wants to change operators but already put numbers in
+	const [solved, setSolved] = useState(false); // This is used to track if someone doesn't change the result by accident.
+	const [changeOperator, setChangeOperator] = useState(false); // This is used to track if someone wants to change operators after putting in an operator but already put numbers in
 
 	// Helper Array to map out the buttons. Can be changed into an array of objects if needed!
 	const buttonValues = [
@@ -46,8 +46,8 @@ const Calculator = () => {
 		const handleReset = () => {
 			setDisplay("0");
 			setHistory("\u00A0");
-      setOperator("");
-      setChangeOperator(false)
+			setOperator("");
+			setChangeOperator(false);
 		};
 
 		// Handles the +/- sign to flip the current operand
@@ -59,8 +59,8 @@ const Calculator = () => {
 		};
 
 		// Concatenates a decimal to the current operand
-    const handleDot = () => {
-      if (solved) return;
+		const handleDot = () => {
+			if (solved) return;
 			setDisplay((prev) => {
 				return prev.includes(".") ? prev : `${prev}.`;
 			});
@@ -68,6 +68,11 @@ const Calculator = () => {
 
 		// Handles the deletion of one character in the operand
 		const handleDelete = () => {
+      if (solved) {
+        setSolved(false)
+        setDisplay("0");
+        return;
+      };
 			setDisplay((prev) =>
 				prev.length > 1
 					? prev[0] === "-" && prev.length === 2
@@ -85,13 +90,13 @@ const Calculator = () => {
 				if (operator) return [...prev].slice(0, prev.length - 1).join("") + e;
 				return `${display} ${e}`;
 			});
-      setDisplay(changeOperator ? display : "0");
-      setChangeOperator(true);
+			setDisplay(changeOperator ? display : "0");
+			setChangeOperator(true);
 		};
 
 		// Handles the calculations
-    const handleResult = (e) => {
-      if(!operator) return
+		const handleResult = (e) => {
+			if (!operator) return;
 			setDisplay((prev) => {
 				const equation = `${history} ${prev}`;
 				const [num1, num2] = equation
@@ -106,8 +111,8 @@ const Calculator = () => {
 			});
 			setHistory("\u00A0");
 			setOperator("");
-      setSolved(true);
-      setChangeOperator(false);
+			setSolved(true);
+			setChangeOperator(false);
 		};
 
 		return array.map((e, i) => {
