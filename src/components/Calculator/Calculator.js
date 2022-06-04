@@ -1,30 +1,66 @@
 import React, { useEffect, useState } from "react";
 import "./Calculator.css";
-import { buttonValues, buttonConstants, BLANK, operators } from "./CalculatorConstants";
-import { handleDigit, handleReset, handleFlip, handleDot, handleDelete, handleOperator, handleResult } from "./buttonHandlers";
+import {
+	buttonValues,
+	buttonConstants,
+	BLANK,
+	operators,
+} from "./CalculatorConstants";
+import {
+	handleDigit,
+	handleReset,
+	handleFlip,
+	handleDot,
+	handleDelete,
+	handleOperator,
+	handleResult,
+} from "./buttonHandlers";
 
 const Calculator = () => {
 	const [result, setResult] = useState(BLANK);
 	const [equation, setEquation] = useState(buttonConstants.ZERO);
-  const [solved, setSolved] = useState(false);
-  const [history, setHistory] = useState([])
+	const [history, setHistory] = useState([]);
 
-  // Used to keep track of result
+	// Used to update the history object
 	useEffect(() => {
-    console.log(history)
-	} , [result, history]);
+		if (result === BLANK) return;
+		setHistory((prev) => {
+			return [
+				...prev,
+				{
+					equation: equation,
+					result: result,
+				},
+			];
+		});
+	}, [result, equation]);
+
+	useEffect(() => {
+		console.log(history);
+	}, [history]);
+
+	useEffect(() => {
+		console.log(equation);
+	}, [equation]);
 
 	const renderButtons = (array) => {
 		return array.map((e, i) => {
 			let handleClick = "";
+			const setters = { setEquation, setResult };
 			// Assigning the right handleClicks
-			if (/\d+/g.test(e)) handleClick = () => handleDigit(e, solved, setEquation, setResult, setSolved);
-			else if (e === buttonConstants.CLEAR) handleClick = () => handleReset(setResult, setEquation, setSolved);
-			else if (e === buttonConstants.FLIP) handleClick = () => handleFlip(setEquation, setResult, setSolved, solved, result);
-			else if (e === buttonConstants.DECIMAL) handleClick = () => handleDot(solved, setResult, setEquation, setSolved);
-			else if (e === buttonConstants.DELETE) handleClick = () => handleDelete(solved, setResult, setSolved, setEquation);
-			else if (operators.includes(e)) handleClick = () => handleOperator(e, solved, setEquation, result, setResult, setSolved);
-			else if (e === buttonConstants.EQUALS) handleClick = () => handleResult(equation, result, setResult, solved, setSolved, setHistory);
+			if (/\d+/g.test(e)) handleClick = () => handleDigit(e, result, setters);
+			else if (e === buttonConstants.CLEAR)
+				handleClick = () => handleReset(setters);
+			else if (e === buttonConstants.FLIP)
+				handleClick = () => handleFlip(result, setters);
+			else if (e === buttonConstants.DECIMAL)
+				handleClick = () => handleDot(result, setters);
+			else if (e === buttonConstants.DELETE)
+				handleClick = () => handleDelete(result, setters);
+			else if (operators.includes(e))
+				handleClick = () => handleOperator(e, result, setters);
+			else if (e === buttonConstants.EQUALS)
+				handleClick = () => handleResult(equation, setters);
 			else handleClick = () => console.log("Doesn't work!");
 
 			return (
