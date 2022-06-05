@@ -151,10 +151,19 @@ export function handleResult(equation, { setResult, setEquation }) {
 			}
 		}
 		return stack[0].toString();
-  });
-  
+	});
 }
 
 export function handleHistoryClear(setHistory) {
-  setHistory([])
+	setHistory([]);
+}
+
+export function handleJumpBack(
+	index,
+	history,
+	{ setEquation, setResult, setHistory }
+) {
+	setEquation(history[index].equation);
+	setResult(history[index].result);
+	setHistory((prev) => prev.slice(0, index));
 }

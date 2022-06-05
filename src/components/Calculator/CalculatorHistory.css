@@ -1,65 +1,65 @@
 .calculator--history {
 	width: clamp(250px, 100%, 20vw);
-  padding-top: 8px;
-  padding-bottom: 8px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 	display: flex;
 	flex-direction: column;
 	margin: 16px auto;
 	align-items: flex-start;
 	gap: 8px;
 	background-color: antiquewhite;
-  max-height: 400px;
-  overflow: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+	max-height: 400px;
+	overflow: scroll;
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }
 
 .calculator--history::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
-.calculator--history--heading{
-  font-size: 28px;
-  margin: 8px 0;
+.calculator--history--heading {
+	font-size: 28px;
+	margin: 8px 0;
 }
 
-.calculator--history--item{
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 12px;
-  gap: 16px;
+.calculator--history--item {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 12px;
+	gap: 16px;
 }
 
-.calculator--history--button{
-  font-size: 18px;
-  padding: 4px;
-  border-radius: 4px;
-  border: 1px black solid;
-  padding: 8px;
-  transition: color 0.5s ease;
+.calculator--history--button {
+	font-size: 18px;
+	padding: 4px;
+	border-radius: 4px;
+	border: 1px black solid;
+	padding: 8px;
+	transition: color 0.5s ease;
 	transition: background-color 0.5s ease;
 }
 
-.calculator--history--button:hover{
-  color: yellow;
+.calculator--history--button:hover {
+	color: yellow;
 	background-color: black;
 	cursor: pointer;
 }
 
-.calculator--history--item--button{
-  font-size: 16px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-radius: 4px;
-  border: 1px black solid;
-  padding: 2px;
-  width: 50px;
-  transition: color 0.5s ease;
+.calculator--history--item--button {
+	font-size: 16px;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	border-radius: 4px;
+	border: 1px black solid;
+	padding: 2px;
+	width: 50px;
+	transition: color 0.5s ease;
 	transition: background-color 0.5s ease;
-  transition: border 0.5 ease;
+	transition: border 0.5 ease;
 }
-.calculator--history--item--button:hover{
-  color: yellow;
+.calculator--history--item--button:enabled:hover {
+	color: yellow;
 	background-color: black;
 	cursor: pointer;
-  border: 1px solid white;
+	border: 1px solid white;
 }

@@ -16,8 +16,13 @@ import {
 	handleResult,
 } from "./buttonHandlers";
 
-const Calculator = ({result, equation, setEquation, setResult, setHistory}) => {
-	
+const Calculator = ({
+	result,
+	equation,
+	setEquation,
+	setResult,
+	setHistory,
+}) => {
 	// Used to update the history object
 	useEffect(() => {
 		if (result === BLANK) return;

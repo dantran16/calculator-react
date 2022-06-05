@@ -1,13 +1,14 @@
 import "./CalculatorHistory.css";
-import { handleHistoryClear } from "./buttonHandlers";
+import { handleHistoryClear, handleJumpBack } from "./buttonHandlers";
 
-const CalculatorHistory = ({ history, setHistory }) => {
+const CalculatorHistory = ({ history, setHistory, setResult, setEquation }) => {
 	const HistoryItem = ({ equation, result, index }) => (
 		<div className="calculator--history--item">
 			<div>
         <button
           className="calculator--history--item--button"
-          onClick={() => console.log(index)}
+          disabled={index===history.length - 1}
+          onClick={() => handleJumpBack(index, history, {setEquation, setResult, setHistory})}
         >&#8618;</button>{" "}
 				{equation} = <b>{result}</b>
 			</div>

@@ -51,7 +51,6 @@ export const operators = [
 	buttonConstants.PLUS,
 	buttonConstants.SUBTRACT,
 	buttonConstants.MULTIPLY,
-  buttonConstants.DIVIDE,
-  
+	buttonConstants.DIVIDE,
 ];
 Object.freeze(operators);
