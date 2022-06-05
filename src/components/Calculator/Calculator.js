@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Calculator.css";
 import {
 	buttonValues,
@@ -16,11 +16,8 @@ import {
 	handleResult,
 } from "./buttonHandlers";
 
-const Calculator = () => {
-	const [result, setResult] = useState(BLANK);
-	const [equation, setEquation] = useState(buttonConstants.ZERO);
-	const [history, setHistory] = useState([]);
-
+const Calculator = ({result, equation, setEquation, setResult, setHistory}) => {
+	
 	// Used to update the history object
 	useEffect(() => {
 		if (result === BLANK) return;
@@ -33,15 +30,7 @@ const Calculator = () => {
 				},
 			];
 		});
-	}, [result, equation]);
-
-	useEffect(() => {
-		console.log(history);
-	}, [history]);
-
-	useEffect(() => {
-		console.log(equation);
-	}, [equation]);
+	}, [result, equation, setHistory]);
 
 	const renderButtons = (array) => {
 		return array.map((e, i) => {
