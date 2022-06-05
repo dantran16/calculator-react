@@ -1,5 +1,12 @@
 # Calculator-React
 - This is a simple calculator project with 4 operations available. This is for a take-home project for a company. This took me 2-3 hours with writing code and bug fixing. I practiced more with React State Hooks.
+[Live Version] (https://calculator-react-ten.vercel.app/)
+
+# What I learned/practiced
+- I practiced more basic React skills (useState & useEffect)
+- I practiced to make the code more readable by splitting the code in different files.
+- I learned to rewrite code to properly match requirements. The first time I did it, I didn't follow the instructions properly.
+- I practiced using the stack data structure for doing the calculations (MDAS)
 
 # Getting Started with Create React App
 
