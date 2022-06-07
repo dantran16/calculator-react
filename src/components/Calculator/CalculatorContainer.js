@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Calculator from "./Calculator";
 import CalculatorHistory from "./CalculatorHistory";
-import { BLANK, buttonConstants } from "./CalculatorConstants";
+import { BLANK, buttonConstants } from "./calculatorConstants";
 
 const CalculatorContainer = () => {
 	const [history, setHistory] = useState([]);

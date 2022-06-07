@@ -1,4 +1,4 @@
-//
+// Putting all the button values in an object
 export const buttonConstants = {
 	CLEAR: "AC",
 	FLIP: "+/-",

@@ -5,7 +5,7 @@ import {
 	buttonConstants,
 	BLANK,
 	operators,
-} from "./CalculatorConstants";
+} from "./calculatorConstants";
 import {
 	handleDigit,
 	handleReset,

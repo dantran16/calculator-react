@@ -1,4 +1,4 @@
-import { buttonConstants, operators, BLANK } from "./CalculatorConstants";
+import { buttonConstants, operators, BLANK } from "./calculatorConstants";
 
 // Handles the event for one digit buttons (depending on its number) and concatenates to the result
 export function handleDigit(number, result, { setEquation, setResult }) {
